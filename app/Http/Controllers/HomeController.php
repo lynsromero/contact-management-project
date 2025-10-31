@@ -22,4 +22,6 @@ class HomeController extends Controller
             ->first();
         return view('home', compact('user'));
     }
+
 }
+
