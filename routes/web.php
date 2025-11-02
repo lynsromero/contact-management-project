@@ -19,6 +19,7 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout']);
 Route::get('home', [HomeController::class, 'index']);
+Route::get('relationship', [HomeController::class, 'relationship']);
 
 Route::prefix('contact')->group(function(){
     Route::controller(ContactController::class)->group(function(){
@@ -28,6 +29,6 @@ Route::prefix('contact')->group(function(){
         Route::get('edit/{id}' , 'edit');
         Route::post('update/{id}' , 'update');
         Route::get('delete/{id}' , 'destroy');
-        Route::get('show/{id}' , 'show');
+        Route::get('otp/send/{id}' , 'otpSend')->name('otp.send');
     });
 });

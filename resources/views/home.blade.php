@@ -18,7 +18,7 @@
       <h4 class="card-title">{{ $user->first_name. ' '. $user->last_name }} </h4>
       <p class="card-text">Email: {{ $user->email }}</p>
       <p class="card-text">Mobile: {{ $user->mo_no }}</p>
-      <p class="card-text">City: {{ $user->city_name }}</p>
+      <p class="card-text">City: {{ $user->city->name }}</p>
       <p class="card-text">Gender: {{ $user->gender }}</p>
       <p class="card-text">Interested at: {{ $user->hobby }}</p>
       <a href="{{ url('contact/create') }}" class="btn btn-success">Add Contact</a>

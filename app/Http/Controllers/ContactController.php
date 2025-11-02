@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactValidate;
+use App\Mail\UserOtpMail;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class ContactController extends Controller
 {
@@ -120,5 +123,19 @@ class ContactController extends Controller
         $contact = Contact::find($id);
         $contact->delete();
         return redirect('contact/list')->with('success', 'Contact Deleted Successfully');
+    }
+
+    public function otpSend($id)
+    {
+        $user = Auth::user();
+        $contact = Contact::find($id);
+        $data = [
+            'user' => $user->first_name . ' ' . $user->last_name ,
+            'username' => $contact->first_name . ' ' . $contact->last_name
+        ];
+
+        Mail::to($contact->email)->send(new UserOtpMail($data));
+
+        return back()->with('success', 'Mail Send Successfully');
     }
 }
