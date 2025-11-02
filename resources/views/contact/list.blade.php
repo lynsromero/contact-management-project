@@ -86,7 +86,7 @@
             <a href="{{ url('contact/edit/' . $contact->id) }}" class="btn btn-primary btn-sm">Edit</a>
             <a href="{{ url('contact/delete/' . $contact->id) }}" class="btn btn-danger btn-sm">Delete</a>
             <a href="{{ url('contact/show/' . $contact->id) }}" class="btn btn-danger btn-sm">Show</a>
-            <a href="{{ route('otp.send' , $contact->id) }}" class="btn btn-danger btn-sm">Send Otp</a>
+            <a href="{{ route('otp.send' , $contact->id) }}" class="btn btn-danger btn-sm">Send Notification</a>
           </td>
         </tr>
         @endforeach
